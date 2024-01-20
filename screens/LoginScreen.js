@@ -1,4 +1,5 @@
 import { View, Text,Image, Dimensions, TouchableOpacity } from 'react-native'
+import {useNavigation} from '@react-navigation/native'
 import React, { useState } from 'react'
 import { BGImage, Logo } from '../assets'
 import { UserTextInput } from '../components'
@@ -7,6 +8,8 @@ const LoginScreen = () => {
     const screenWidth = Math.round(Dimensions.get("window").width)
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+
+    const navigation = useNavigation()
 
   return (
     <View className="flex-1 items-center justify-start">
@@ -40,7 +43,7 @@ const LoginScreen = () => {
 
             <View className='w-full py-12 flex-row items-center justify-center space-x-2'>
               <Text className='text-base text-primaryText'>Don't have an account?</Text>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => navigation.navigate('SignUpScreen')}>
                 <Text className='text-base font-semibold text-primaryBold'>Sign Up</Text>
               </TouchableOpacity>
             </View>
